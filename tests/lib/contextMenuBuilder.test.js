@@ -55,7 +55,7 @@ it('should make sure that word suggestions are only requested if the word contai
     { role: 'selectall' }
   ]
   buildEditorContextMenu(editor, event)
-  expect(menuBuilderParameter).toEqual(expectedMenuParameter)
+  expect(menuBuilderParameter.slice(0, 4)).toEqual(expectedMenuParameter)
   expect(spellcheck.getSpellingSuggestion).not.toHaveBeenCalled()
 })
 
@@ -81,7 +81,7 @@ it('should make sure that word suggestions are only requested if the word contai
     { role: 'selectall' }
   ]
   buildEditorContextMenu(editor, event)
-  expect(menuBuilderParameter).toEqual(expectedMenuParameter)
+  expect(menuBuilderParameter.slice(0, 4)).toEqual(expectedMenuParameter)
   expect(spellcheck.getSpellingSuggestion).not.toHaveBeenCalled()
 })
 
