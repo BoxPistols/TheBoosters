@@ -3,7 +3,7 @@
 // real renderer entry calls a native binding (electron_common_features) that does
 // not exist in plain Node, so every suite that loads browser code crashed on
 // require. This stubs the surface used at module-load time.
-const noop = jest.genMockFunction()
+const noop = jest.fn()
 
 // `remote.require('electron')` must return an object: browser code destructures
 // Menu/clipboard/shell from it at module-load, which crashes on undefined.
@@ -15,7 +15,12 @@ const electronStub = {
   MenuItem: function() {},
   clipboard: { writeText: noop, readText: noop },
   shell: { openExternal: noop, openItem: noop },
-  dialog: { showOpenDialog: noop, showSaveDialog: noop, showMessageBox: noop },
+  dialog: {
+    showOpenDialog: noop,
+    showSaveDialog: noop,
+    showMessageBox: noop,
+    showErrorBox: noop
+  },
   app: { getPath: noop, getAppPath: noop }
 }
 

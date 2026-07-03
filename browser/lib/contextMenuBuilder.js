@@ -48,8 +48,16 @@ function runEditorAiAction(editor, actionKey) {
     editor.setCursor(editor.posFromIndex(idx))
   }
 
+  // Surface failures in a dialog rather than writing the error into the note
+  // (which would corrupt the user's document). Fall back to console if the
+  // dialog API isn't available (e.g. unit tests).
   aiAssist.runAiAction(actionKey, selected, insert).catch(err => {
-    insert('\n[AI error] ' + ((err && err.message) || String(err)) + '\n')
+    const message = (err && err.message) || String(err)
+    try {
+      remote.require('electron').dialog.showErrorBox('AI', message)
+    } catch (e) {
+      console.error('[AI]', message)
+    }
   })
 }
 
