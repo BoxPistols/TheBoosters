@@ -9,7 +9,7 @@
   "scripts": {
     "postinstall": "node node_modules/electron/install.js",
     "start": "electron ./index.js",
-    "compile": "cross-env BABEL_ENV=production NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --config webpack-production.config.js --bail",
+    "compile": "vite build --config vite.renderer.config.mjs",
     "test": "npm run ava && npm run jest",
     "ava": "cross-env NODE_ENV=test ava --serial",
     "jest": "jest",
