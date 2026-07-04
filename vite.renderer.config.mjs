@@ -86,7 +86,22 @@ const BUNDLED = new Set([
 ])
 
 // require() of these at runtime throws ERR_REQUIRE_ESM — bundle instead.
-const ESM_ONLY_PREFIX = ['@babel/runtime/', 'lodash-es']
+// (The 2026-07 dep wave upgraded the bottom four to their ESM-only majors.)
+const ESM_ONLY_PREFIX = [
+  '@babel/runtime/',
+  'lodash-es',
+  'escape-string-regexp',
+  'file-url',
+  'filenamify',
+  'query-string',
+  // transitive ESM-only deps of the four above
+  'filename-reserved-regex',
+  'strip-outer',
+  'trim-repeated',
+  'split-on-first',
+  'filter-obj',
+  'decode-uri-component'
+]
 
 // Same auto-imports the webpack stylus block provided (prepended to every
 // .styl source — the `imports` option isn't applied by Vite, so inject).
@@ -124,11 +139,11 @@ export default defineConfig({
         find: /^mousetrap-global-bind$/,
         replacement: `${root}/browser/lib/vendorGlobals/mousetrapGlobalBind.js`
       },
-      {
-        // already registered on window.CodeMirror by its <script> tag
-        find: /^codemirror-mode-elixir$/,
-        replacement: `${root}/browser/lib/vendorGlobals/noop.js`
-      }
+      // NOTE: codemirror-mode-elixir is intentionally NOT aliased — it stays
+      // in BUNDLED, so plugin-commonjs bundles its UMD and the inner
+      // require('codemirror') hits the window-global alias above, registering
+      // the elixir mode on the right CodeMirror instance. (Its old <script>
+      // tag mis-detected CJS on Electron 28 pages and crashed — removed.)
     ]
   },
   // Legacy JSX lives in plain .js files (esbuild assumes JSX only in .jsx).
