@@ -92,17 +92,14 @@ importers:
         specifier: ^1.5.0
         version: 1.5.0
       highlight.js:
-        specifier: ^9.13.1
-        version: 9.18.5
+        specifier: ^11.11.1
+        version: 11.11.1
       i18n-2:
         specifier: ^0.7.2
         version: 0.7.3
       iconv-lite:
         specifier: ^0.4.19
         version: 0.4.24
-      immutable:
-        specifier: ^3.8.1
-        version: 3.8.3
       invert-color:
         specifier: ^2.0.0
         version: 2.0.0
@@ -110,8 +107,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7
       js-yaml:
-        specifier: ^3.13.1
-        version: 3.15.0
+        specifier: ^5.2.1
+        version: 5.2.1
       jsonlint-mod:
         specifier: ^1.7.4
         version: 1.7.6
@@ -4051,6 +4048,10 @@ packages:
     resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
 
+  highlight.js@11.11.1:
+    resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
+    engines: {node: '>=12.0.0'}
+
   highlight.js@9.18.5:
     resolution: {integrity: sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==}
     deprecated: Support has ended for 9.x series. Upgrade to @latest
@@ -4824,6 +4825,10 @@ packages:
 
   js-yaml@4.3.0:
     resolution: {integrity: sha512-1td788aAnnZ5qs7V2QIRl1owjtYpbKt749Y3xauqQgwIIGF/xXWz1wMTEBx5O3LK3lXLVuqXPdPxj2BoFHaW9Q==}
+    hasBin: true
+
+  js-yaml@5.2.1:
+    resolution: {integrity: sha512-zfLtNfQqxVqq3uaTqSkh4x4hZw3KHobGUA0fJUj4wawW8bsQLTVqpHdXSIzidh7o+4lEW36tANuAGdaFx6Zgnw==}
     hasBin: true
 
   jsbn@0.1.1:
@@ -13372,6 +13377,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  highlight.js@11.11.1: {}
+
   highlight.js@9.18.5: {}
 
   history@4.10.1:
@@ -13567,7 +13574,8 @@ snapshots:
 
   ignore@3.3.10: {}
 
-  immutable@3.8.3: {}
+  immutable@3.8.3:
+    optional: true
 
   import-fresh@2.0.0:
     dependencies:
@@ -14341,6 +14349,10 @@ snapshots:
       esprima: 2.7.3
 
   js-yaml@4.3.0:
+    dependencies:
+      argparse: 2.0.1
+
+  js-yaml@5.2.1:
     dependencies:
       argparse: 2.0.1
 
