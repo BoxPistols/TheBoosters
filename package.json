@@ -20,7 +20,9 @@
     "dist": "npm run compile && electron-builder",
     "dist:mac": "npm run compile && electron-builder --mac",
     "dist:win": "npm run compile && electron-builder --win --x64",
-    "dist:dir": "npm run compile && electron-builder --dir"
+    "dist:dir": "npm run compile && electron-builder --dir",
+    "compile:vite": "vite build --config vite.renderer.config.mjs",
+    "compile:webpack": "cross-env BABEL_ENV=production NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --config webpack-production.config.js --bail"
   },
   "config": {
     "electron-version": "28.3.3"
@@ -203,10 +205,12 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.3",
     "ava": "^0.25.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^22.4.3",
     "babel-loader": "^6.2.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-react-transform": "^2.0.0",
     "babel-plugin-webpack-alias": "^2.1.1",
     "babel-preset-env": "^1.6.1",
@@ -260,6 +264,8 @@
     "style-loader": "^0.12.4",
     "stylus": "^0.52.4",
     "stylus-loader": "^2.5.1",
+    "vite": "^6.4.3",
+    "vite-plugin-electron-renderer": "^1.0.0",
     "webpack": "^1.15.0",
     "webpack-dev-server": "^1.16.5"
   },
