@@ -22,7 +22,6 @@ const buildEditorContextMenu = require('browser/lib/contextMenuBuilder')
 import { createTurndownService } from '../lib/turndown'
 import { languageMaps } from '../lib/CMLanguageList'
 import snippetManager from '../lib/SnippetManager'
-import { findStorage } from 'browser/lib/findStorage'
 import {
   generateInEditor,
   tocExistsInEditor
